@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart, Database, Layers, Layout, TrendingUp } from "lucide-react";
+import { BarChart, Database, TrendingUp } from "lucide-react";
 import React from "react";
 
 import molLogo from "../public/MOL.png";
@@ -337,48 +337,6 @@ export const projects: Project[] = [
       "👥 Demographics: Analysis of Tenure by Geography and Churn Rate KPIs with trend indicators. Total Churned/Retained cards.",
       "💼 Products & Behavior: Donut charts for Activity Split and column charts for Churn by Credit Card and Bank Products.",
       "💰 Financial Insights: Churn by Balance, Score Range, and Average Credit Score comparisons."
-    ]
-  },
-  {
-    id: "geosa-mapping",
-    title: "Geospatial Data Dashboard",
-    description: "Advanced geospatial visualization and analysis for GEOSA's spatial workflows.",
-    longDescription: "Developed a specialized geospatial reporting solution that integrated GIS data with business performance metrics. This enabled stakeholders to visualize geospatial workflow efficiency and spatial distribution of development projects across the region.",
-    tech: ["Power BI", "GIS Data", "Power Query", "Figma"],
-    image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800",
-    link: "#",
-    category: "Geospatial",
-    icon: <Layers className="w-5 h-5 text-accent" />,
-    challenges: [
-      "Integrating heavy geospatial files into Power BI",
-      "Visualizing spatial distribution without performance lag",
-      "Translating GIS coordinates into business regions"
-    ],
-    solutions: [
-      "Used specialized ArcGIS and Mapbox integrations",
-      "Optimized data granularity for faster rendering",
-      "Developed custom map layers in Figma for better UI/UX"
-    ]
-  },
-  {
-    id: "bpo-ksa",
-    title: "Customer Service BI",
-    description: "Real-time visibility into customer operations for BPO KSA.",
-    longDescription: "Transformed BPO KSA's raw customer service logs into a real-time operational dashboard. The solution covered AHT (Average Handle Time), CSAT (Customer Satisfaction), and agent performance metrics, providing management with daily actionable insights.",
-    tech: ["Power BI", "Dynamics 365", "Azure", "Excel"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    link: "#",
-    category: "Customer Service",
-    icon: <Layout className="w-5 h-5 text-accent" />,
-    challenges: [
-      "Real-time data streaming from Dynamics 365",
-      "High volume of daily transaction logs",
-      "Need for individual agent performance tracking"
-    ],
-    solutions: [
-      "Seamless Azure Data Factory integration",
-      "Developed tiered access dashboards for different management levels",
-      "Implemented predictive analysis for call volume spikes"
     ]
   },
   {
