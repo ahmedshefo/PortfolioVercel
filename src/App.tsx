@@ -32,8 +32,8 @@ function ScrollToTop() {
 // Layout for sub-pages to give them a consistent header
 function PageLayout({ children, title, subtitle }: { children: React.ReactNode, title: string, subtitle: string }) {
   return (
-    <div className="pt-40 pb-20">
-      <div className="max-w-7xl mx-auto px-6 mb-20">
+    <div className="pt-32 pb-16">
+      <div className="max-w-7xl mx-auto px-6 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

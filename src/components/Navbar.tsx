@@ -1,20 +1,26 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
-import { Menu, X, Linkedin, Github, Mail } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useSpring, useMotionValue, useMotionTemplate } from "motion/react";
+import { Menu, X, Linkedin, Github, Mail, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
   const { scrollYProgress } = useScroll();
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
+
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
@@ -24,6 +30,10 @@ export default function Navbar() {
   });
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -33,11 +43,20 @@ export default function Navbar() {
     document.documentElement.style.colorScheme = theme;
     localStorage.setItem('theme', theme);
     
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [theme]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
+  const handleMouseMove = ({ currentTarget, clientX, clientY }: React.MouseEvent) => {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
   };
 
   const navLinks = [
@@ -57,8 +76,47 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 rounded-3xl ${scrolled ? "bg-white/90 dark:bg-black/60 backdrop-blur-3xl shadow-xl border border-gray-200/50 dark:border-white/10 py-3" : "bg-white/10 dark:bg-transparent py-4"}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center">
+      <nav 
+        onMouseMove={handleMouseMove}
+        className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 rounded-3xl group overflow-hidden ${
+          scrolled 
+            ? "bg-white/80 dark:bg-black/40 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-gray-200/50 dark:border-white/10 py-3" 
+            : "bg-white/5 dark:bg-transparent py-4"
+        }`}
+      >
+        {/* Interactive Background Layer */}
+        <motion.div 
+          className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{
+            background: useMotionTemplate`radial-gradient(150px circle at ${mouseX}px ${mouseY}px, rgba(var(--accent-rgb, 212, 163, 115), 0.15), transparent 80%)`
+          }}
+        />
+
+        {/* Floating Animated Particles */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-24 h-24 bg-accent/5 rounded-full blur-3xl"
+              animate={{
+                x: [0, 50, 0],
+                y: [0, 20, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 10 + i * 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{
+                left: `${20 + i * 30}%`,
+                top: `-20%`,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 flex items-center relative z-10">
           <Link to="/" className="flex items-center gap-0 flex-1">
             <span className="text-3xl md:text-4xl font-black tracking-tighter text-accent">A</span>
             <span className="text-3xl md:text-4xl font-black tracking-tighter text-gray-900 dark:text-white">S</span>
@@ -86,7 +144,7 @@ export default function Navbar() {
                  <svg className="w-3 md:w-3.5 h-3 md:h-3.5 text-gray-400 dark:text-white/40 fill-current" viewBox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                </div>
                <motion.div 
-                 animate={{ x: theme === 'dark' ? (window.innerWidth < 768 ? 32 : 44) : 0 }}
+                 animate={{ x: theme === 'dark' ? (isMobile ? 32 : 44) : 0 }}
                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
                  className="absolute left-1 w-6 md:w-8 h-6 md:h-8 bg-black dark:bg-white rounded-full flex items-center justify-center shadow-lg"
                >

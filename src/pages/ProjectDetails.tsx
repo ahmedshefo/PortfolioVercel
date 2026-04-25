@@ -91,7 +91,11 @@ export default function ProjectDetails() {
             className="relative"
           >
             <div className="aspect-video bg-gray-100 dark:bg-white/5 rounded-[2rem] sm:rounded-[3rem] overflow-hidden border border-gray-100 dark:border-white/10 shadow-2xl">
-              <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+              <img 
+                src={project.screenshots && project.screenshots.length > 0 ? project.screenshots[0] : project.image} 
+                alt={project.title} 
+                className="w-full h-full object-cover" 
+              />
             </div>
             
             {/* Context Cards */}
@@ -121,6 +125,29 @@ export default function ProjectDetails() {
             </div>
           </motion.div>
         </div>
+
+        {/* Project Screenshots */}
+        {project.screenshots && project.screenshots.length > 0 && (
+          <div className="mt-24">
+            <h2 className="text-3xl font-black tracking-tighter text-gray-950 dark:text-white mb-12">
+              Dashboard <span className="text-accent italic">Screenshots</span>
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {project.screenshots.slice(project.screenshots.length > 1 ? 1 : 0).map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/10 shadow-xl"
+                >
+                  <img src={src} alt={`${project.title} screenshot ${i + 1}`} className="w-full h-auto" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Related Projects */}
         <div className="mt-24 sm:mt-40 pt-16 sm:pt-20 border-t border-gray-200 dark:border-white/5">

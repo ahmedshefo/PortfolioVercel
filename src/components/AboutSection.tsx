@@ -3,6 +3,13 @@
 import { motion } from "motion/react";
 import { Award, Briefcase, GraduationCap, Heart, Lightbulb, Target, TrendingUp, Database, PieChart } from "lucide-react";
 
+import sqlImage from "../../public/SQL.png";
+import excelImage from "../../public/Excel.png";
+import figmaImage from "../../public/Figma.png";
+import dynImage from "../../public/DYN.png";
+import pbiImage from "../../public/PowerBI.png";
+import fabricImage from "../../public/fabric.png";
+
 const stats = [
   { label: "Founded on", value: "2021" },
   { label: "Success Rate", value: "98%" },
@@ -173,12 +180,12 @@ export default function AboutSection() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { name: "Power BI", level: "PL-300 Certified", color: "text-amber-500", image: "/PowerBI.png" },
-              { name: "Microsoft Fabric", level: "DP-600 Mastery", color: "text-blue-500", image: "/fabric.png" },
-              { name: "SQL Server", level: "T-SQL Specialist", color: "text-blue-600", image: "/SQL.png" },
-              { name: "Excel DAX", level: "Formula Architect", color: "text-emerald-600", image: "/Excel.png" },
-              { name: "Figma", level: "Data Visualization", color: "text-purple-500", image: "/Figma.png" },
-              { name: "Dynamics", level: "CRM Integration", color: "text-brand-500", image: "/DYN.png" },
+              { name: "Power BI", level: "PL-300 Certified", color: "text-amber-500", image: pbiImage },
+              { name: "Microsoft Fabric", level: "DP-600 Mastery", color: "text-blue-500", image: fabricImage },
+              { name: "SQL Server", level: "T-SQL Specialist", color: "text-blue-600", image: sqlImage },
+              { name: "Excel DAX", level: "Formula Architect", color: "text-emerald-600", image: excelImage },
+              { name: "Figma", level: "Data Visualization", color: "text-purple-500", image: figmaImage },
+              { name: "Dynamics", level: "CRM Integration", color: "text-brand-500", image: dynImage },
               { name: "Python", level: "Pandas & Numpy", color: "text-green-600" },
               { name: "Power Query", level: "ETL Processes", color: "text-orange-500" },
             ].map((skill, idx) => (

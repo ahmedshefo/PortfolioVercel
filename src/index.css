@@ -34,9 +34,19 @@
   color: #ffffff;
 }
 
+html {
+  font-size: 15px; /* Subtle zoom out from standard 16px */
+}
+
 body {
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

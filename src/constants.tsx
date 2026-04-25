@@ -1,9 +1,20 @@
 "use client";
 
-import { BarChart, Database, Layers, Layout } from "lucide-react";
+import { BarChart, Database, Layers, Layout, TrendingUp } from "lucide-react";
 import React from "react";
 
 import molLogo from "../public/MOL.png";
+import churnImage from "../public/Churn.jpg";
+import churn2 from "../public/churn2.jpg";
+import churn3 from "../public/churn3.jpg";
+import churn4 from "../public/churn4.jpg";
+import churn5 from "../public/churn5.jpg";
+import redbullImage from "../public/Redbull.jpg";
+import ssamzImage from "../public/SSAMZ.jpg";
+import ssamz1 from "../public/SSAMZ 1.jpg";
+import ssamz2 from "../public/SSAMZ 2.jpg";
+import ssamz3 from "../public/SSAMZ 3.jpg";
+import ssamz4 from "../public/SSAMZ 4.jpg";
 
 export interface Project {
   id: string;
@@ -17,6 +28,7 @@ export interface Project {
   icon: React.ReactNode;
   challenges: string[];
   solutions: string[];
+  screenshots?: string[];
 }
 
 export interface Experience {
@@ -305,24 +317,26 @@ export const testimonials: Testimonial[] = [
 
 export const projects: Project[] = [
   {
-    id: "mol-dashboard",
-    title: "MOL BI Ecosystem",
-    description: "End-to-end BI solution for the Ministry of Labour (Oman) to track labor market indicators.",
-    longDescription: "Architected a comprehensive BI ecosystem for the Ministry of Labour. The project involved multi-source data ingestion, complex ETL processing in SQL Server, and the development of 15+ interactive dashboards reporting on labor market trends, workforce distribution, and sectoral performance.",
-    tech: ["Power BI", "SQL Server", "T-SQL", "Excel"],
-    image: "https://images.unsplash.com/photo-1551288049-bbda48658a71?auto=format&fit=crop&q=80&w=800",
+    id: "bank-churn-dashboard",
+    title: "Bank Churn Dashboard in Power BI",
+    description: "Comprehensive churn analysis for a banking institution to identify at-risk customers.",
+    longDescription: "This dashboard provides a holistic view of customer retention patterns, product usage, and financial behavior enabling banks to identify high risk segments and make informed retention strategies. It features an overview of total customers, products, and financial status, alongside deep demographic insights and behavioral splits. By analyzing churn through various lenses like age, geography, and financial standing, it offers actionable intelligence for customer retention.",
+    tech: ["Power BI", "DAX", "Data Modeling", "Visual Design", "Figma", "Customer Analytics"],
+    image: churnImage,
+    screenshots: [churn2, churn3, churn4, churn5],
     link: "#",
-    category: "Government",
+    category: "Banking / Fintech",
     icon: <BarChart className="w-5 h-5 text-accent" />,
     challenges: [
-      "Large-scale data from heterogeneous government sources",
-      "Strict data governance and accuracy requirements",
-      "Need for real-time reporting on critical indices"
+      "Identifying significant churn predictors among diverse customer attributes",
+      "Visualizing temporal trends in customer attrition",
+      "Creating actionable segments for retention marketing"
     ],
     solutions: [
-      "Implemented robust SQL ETL pipelines with extensive error logging",
-      "Developed high-performance DAX measures for complex aggregations",
-      "Created a centralized data warehouse architecture"
+      "🏠 Dashboard / Overview: Key cards for Total Customers, Products, Balance, and Credit Cards with Geo Insights (Geography pie charts).",
+      "👥 Demographics: Analysis of Tenure by Geography and Churn Rate KPIs with trend indicators. Total Churned/Retained cards.",
+      "💼 Products & Behavior: Donut charts for Activity Split and column charts for Churn by Credit Card and Bank Products.",
+      "💰 Financial Insights: Churn by Balance, Score Range, and Average Credit Score comparisons."
     ]
   },
   {
@@ -365,6 +379,51 @@ export const projects: Project[] = [
       "Seamless Azure Data Factory integration",
       "Developed tiered access dashboards for different management levels",
       "Implemented predictive analysis for call volume spikes"
+    ]
+  },
+  {
+    id: "redbull-sales",
+    title: "Red Bull Sales Dashboard",
+    description: "Comprehensive sales analysis for Red Bull across various sectors and products (2017-2021).",
+    longDescription: "This dashboard provides a comprehensive look at Red Bull's sales from 2017 to 2021 across various sectors (Bar, Club, Hotel, Restaurant) and offers insights into sugar-free vs. regular product sales and cooler storage preferences. It enables business decision-makers to derive actionable insights, optimize product distribution, and better align marketing strategies with consumer preferences.",
+    tech: ["Power BI", "DAX", "Data Modeling", "Visual Design"],
+    image: redbullImage,
+    link: "#",
+    category: "FMCG / Sales",
+    icon: <TrendingUp className="w-5 h-5 text-accent" />,
+    challenges: [
+      "Analyzing high-volume sales data across five years",
+      "Segmenting performance by diverse sectors and product types",
+      "Identifying the impact of storage preferences on regional sales"
+    ],
+    solutions: [
+      "📊 Total Sales by Year: Annual sales figures showcase growth trends and performance over time.",
+      "🥤 Product Composition: Breakdown of sales for sugar-free and regular drinks.",
+      "❄️ Storage Insights: Analysis of cooler vs. non-cooler storage and its impact on sales.",
+      "📈 Growth Trends: Visualizations of the annual growth rate, helping identify seasonal trends and high-growth periods."
+    ]
+  },
+  {
+    id: "ssamz-sales",
+    title: "SSAMZ Sales Performance",
+    description: "Multi-dimensional sales analysis for SSAMZ, tracking market penetration and regional growth.",
+    longDescription: "A deep-dive analysis of SSAMZ's market performance, focusing on regional sales distribution, product line profitability, and seasonal trends. The dashboard provides stakeholders with real-time visibility into inventory turnover and customer acquisition costs, enabling data-driven expansion strategies in competitive markets.",
+    tech: ["Power BI", "DAX", "Data Modeling", "ETL Processes", "Figma"],
+    image: ssamzImage,
+    screenshots: [ssamz1, ssamz2, ssamz3, ssamz4],
+    link: "#",
+    category: "FMCG / Retail",
+    icon: <Database className="w-5 h-5 text-accent" />,
+    challenges: [
+      "Integrating disparate data sources from multiple regional branches",
+      "Normalizing inventory metrics for seasonal variability",
+      "Visualizing complex logistics chain data for executive decision-making"
+    ],
+    solutions: [
+      "📊 Regional Breakdown: Visualizing sales performance across different geographical zones using interactive maps.",
+      "📦 Inventory Tracking: Optimized view of stock levels vs. demand forecasts to reduce overhead.",
+      "💰 Profitability Analysis: Deep dive into margin performance by product category and SKU.",
+      "🗓️ Seasonal Forecasting: Implementation of time-series analysis to predict upcoming peak periods."
     ]
   }
 ];
