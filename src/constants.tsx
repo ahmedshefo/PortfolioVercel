@@ -3,6 +3,8 @@
 import { BarChart, Database, Layers, Layout } from "lucide-react";
 import React from "react";
 
+import molLogo from "../public/MOL.png";
+
 export interface Project {
   id: string;
   title: string;
@@ -273,7 +275,7 @@ export const testimonials: Testimonial[] = [
     role: "PMO",
     company: "MOL",
     content: "Ahmed is an excellent expert in his field, working with him into different projects was an excellent experience. Very respectful, humble, solution oriented, and deep expert in his area. Speed in delivery, and always exceeding exceeding expectations. I strongly recommend him, he is the go-to person if you are looking for data analysis and dashboards.",
-    avatar: "/MOL.png"
+    avatar: molLogo
   },
   {
     id: "test-geosa",

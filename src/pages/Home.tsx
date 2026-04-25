@@ -12,6 +12,14 @@ import ContactSection from "../components/ContactSection";
 import ExperienceSection from "../components/ExperienceSection";
 import DataMesh from "../components/DataMesh";
 
+import meImage from "../../public/me.png";
+import sqlImage from "../../public/SQL.png";
+import excelImage from "../../public/Excel.png";
+import figmaImage from "../../public/Figma.png";
+import dynImage from "../../public/DYN.png";
+import pbiImage from "../../public/PowerBI.png";
+import fabricImage from "../../public/fabric.png";
+
 const Typewriter = ({ roles }: { roles: string[] }) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -245,10 +253,11 @@ export default function Home() {
           >
             <div className="aspect-square md:aspect-4/5 bg-white/5 backdrop-blur-sm rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden group">
               <img 
-                src="/me.png" 
+                src={meImage} 
                 alt="Ahmed El-Feel" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 onError={(e) => {
+                  console.error("Image failed to load:", meImage);
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
                 }}
@@ -267,7 +276,7 @@ export default function Home() {
               className="absolute bottom-20 -left-16 p-2 bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-20 flex items-center gap-2"
             >
               <div className="w-10 h-10 bg-white dark:bg-white/5 rounded-lg flex items-center justify-center overflow-hidden p-1.5 shadow-sm">
-                <img src="/SQL.png" alt="SQL Server" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={sqlImage} alt="SQL Server" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] font-black tracking-widest uppercase text-gray-500 dark:text-white/60 pr-2">SQL Server</span>
             </motion.div>
@@ -278,7 +287,7 @@ export default function Home() {
               className="absolute top-40 -left-12 p-2 bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-20 flex items-center gap-2"
             >
               <div className="w-10 h-10 bg-white dark:bg-white/5 rounded-lg flex items-center justify-center overflow-hidden p-1.5 shadow-sm">
-                <img src="/Excel.png" alt="Excel" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={excelImage} alt="Excel" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] font-black tracking-widest uppercase text-gray-500 dark:text-white/60 pr-2">Excel</span>
             </motion.div>
@@ -289,7 +298,7 @@ export default function Home() {
               className="absolute top-10 left-10 p-2 bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-20 flex items-center gap-2"
             >
               <div className="w-10 h-10 bg-white dark:bg-white/5 rounded-lg flex items-center justify-center overflow-hidden p-1.5 shadow-sm">
-                <img src="/Figma.png" alt="Figma" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={figmaImage} alt="Figma" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] font-black tracking-widest uppercase text-gray-500 dark:text-white/60 pr-2">Figma</span>
             </motion.div>
@@ -300,7 +309,7 @@ export default function Home() {
               className="absolute bottom-32 -right-12 p-2 bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-40 flex items-center gap-2"
             >
               <div className="w-10 h-10 bg-white dark:bg-white/5 rounded-lg flex items-center justify-center overflow-hidden p-1.5 shadow-sm">
-                <img src="/DYN.png" alt="Dynamics" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={dynImage} alt="Dynamics" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] font-black tracking-widest uppercase text-gray-500 dark:text-white/60 pr-2">Dynamics</span>
             </motion.div>
@@ -311,7 +320,7 @@ export default function Home() {
               className="absolute -top-10 -right-10 p-2 bg-white/60 dark:bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 flex items-center gap-2 z-30"
             >
               <div className="w-12 h-12 bg-white dark:bg-white/5 rounded-lg flex items-center justify-center overflow-hidden p-1.5 shadow-sm">
-                <img src="/PowerBI.png" alt="Power BI" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={pbiImage} alt="Power BI" className="w-full h-full object-contain" />
               </div>
               <div className="pr-2">
                 <p className="text-[10px] font-black uppercase text-accent mb-0.5">Primary Tool</p>
@@ -325,7 +334,7 @@ export default function Home() {
               className="absolute top-1/2 -right-16 p-2 bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-20 flex items-center gap-2"
             >
               <div className="w-10 h-10 bg-white dark:bg-white/5 rounded-lg flex items-center justify-center overflow-hidden p-1.5 shadow-sm">
-                <img src="/fabric.png" alt="Microsoft Fabric" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={fabricImage} alt="Microsoft Fabric" className="w-full h-full object-contain" />
               </div>
               <span className="text-[10px] font-black tracking-widest uppercase text-gray-500 dark:text-white/60 pr-2">Fabric</span>
             </motion.div>
