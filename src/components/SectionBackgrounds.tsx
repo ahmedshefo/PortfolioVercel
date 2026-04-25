@@ -58,7 +58,7 @@ export const FlowBackground = () => {
               repeat: Infinity,
               ease: "linear"
             }}
-            className={`absolute w-[${400 + i * 200}px] h-[${400 + i * 200}px] border-2 border-accent/20 blur-[1px]`}
+            className="absolute border-2 border-accent/20 blur-[1px]"
             style={{ 
                 width: 400 + i * 150, 
                 height: 400 + i * 150,

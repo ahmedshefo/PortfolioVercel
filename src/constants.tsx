@@ -301,4 +301,68 @@ export const testimonials: Testimonial[] = [
   }
 ];
 
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    id: "mol-dashboard",
+    title: "MOL BI Ecosystem",
+    description: "End-to-end BI solution for the Ministry of Labour (Oman) to track labor market indicators.",
+    longDescription: "Architected a comprehensive BI ecosystem for the Ministry of Labour. The project involved multi-source data ingestion, complex ETL processing in SQL Server, and the development of 15+ interactive dashboards reporting on labor market trends, workforce distribution, and sectoral performance.",
+    tech: ["Power BI", "SQL Server", "T-SQL", "Excel"],
+    image: "https://images.unsplash.com/photo-1551288049-bbda48658a71?auto=format&fit=crop&q=80&w=800",
+    link: "#",
+    category: "Government",
+    icon: <BarChart className="w-5 h-5 text-accent" />,
+    challenges: [
+      "Large-scale data from heterogeneous government sources",
+      "Strict data governance and accuracy requirements",
+      "Need for real-time reporting on critical indices"
+    ],
+    solutions: [
+      "Implemented robust SQL ETL pipelines with extensive error logging",
+      "Developed high-performance DAX measures for complex aggregations",
+      "Created a centralized data warehouse architecture"
+    ]
+  },
+  {
+    id: "geosa-mapping",
+    title: "Geospatial Data Dashboard",
+    description: "Advanced geospatial visualization and analysis for GEOSA's spatial workflows.",
+    longDescription: "Developed a specialized geospatial reporting solution that integrated GIS data with business performance metrics. This enabled stakeholders to visualize geospatial workflow efficiency and spatial distribution of development projects across the region.",
+    tech: ["Power BI", "GIS Data", "Power Query", "Figma"],
+    image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800",
+    link: "#",
+    category: "Geospatial",
+    icon: <Layers className="w-5 h-5 text-accent" />,
+    challenges: [
+      "Integrating heavy geospatial files into Power BI",
+      "Visualizing spatial distribution without performance lag",
+      "Translating GIS coordinates into business regions"
+    ],
+    solutions: [
+      "Used specialized ArcGIS and Mapbox integrations",
+      "Optimized data granularity for faster rendering",
+      "Developed custom map layers in Figma for better UI/UX"
+    ]
+  },
+  {
+    id: "bpo-ksa",
+    title: "Customer Service BI",
+    description: "Real-time visibility into customer operations for BPO KSA.",
+    longDescription: "Transformed BPO KSA's raw customer service logs into a real-time operational dashboard. The solution covered AHT (Average Handle Time), CSAT (Customer Satisfaction), and agent performance metrics, providing management with daily actionable insights.",
+    tech: ["Power BI", "Dynamics 365", "Azure", "Excel"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    link: "#",
+    category: "Customer Service",
+    icon: <Layout className="w-5 h-5 text-accent" />,
+    challenges: [
+      "Real-time data streaming from Dynamics 365",
+      "High volume of daily transaction logs",
+      "Need for individual agent performance tracking"
+    ],
+    solutions: [
+      "Seamless Azure Data Factory integration",
+      "Developed tiered access dashboards for different management levels",
+      "Implemented predictive analysis for call volume spikes"
+    ]
+  }
+];
