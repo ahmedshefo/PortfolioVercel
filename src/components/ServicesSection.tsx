@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { BarChart3, Layout, Zap } from "lucide-react";
-import FloatingCapsules from "./FloatingCapsules";
+import InteractiveGame from "./InteractiveGame";
 
 const services = [
   {
@@ -90,14 +90,7 @@ export default function ServicesSection() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[radial-gradient(circle,_rgba(190,242,100,0.15)_0%,_transparent_70%)] pointer-events-none" />
             
             <div className="relative w-full h-[500px] md:h-[600px] bg-white/5 dark:bg-black/40 backdrop-blur-3xl rounded-[3rem] border border-gray-100 dark:border-white/10 p-4 shadow-2xl overflow-hidden">
-               <FloatingCapsules />
-               
-               {/* Context text for interaction */}
-               <div className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none">
-                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 animate-pulse bg-white/10 dark:bg-black/30 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
-                   Drag items to explore
-                 </p>
-               </div>
+               <InteractiveGame />
             </div>
           </motion.div>
 

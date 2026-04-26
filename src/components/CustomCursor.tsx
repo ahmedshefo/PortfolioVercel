@@ -73,9 +73,9 @@ export default function CustomCursor() {
         }}
       />
 
-      {/* Large Circle - Delayed Follower (The "Premium" part) */}
+      {/* Large Circle - Delayed Follower */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border border-accent/30 backdrop-blur-[2px] transition-colors duration-300"
+        className="fixed top-0 left-0 rounded-full border border-accent/30 transition-colors duration-300 pointer-events-none"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,

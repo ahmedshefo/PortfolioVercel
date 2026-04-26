@@ -16,15 +16,43 @@ export default function ContactSection() {
 
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 1500);
+    
+    // Replace this URL with your actual Formspree endpoint URL
+    // e.g., "https://formspree.io/f/xabcdefg"
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xyklawjv"; 
+
+    if (!FORMSPREE_ENDPOINT) {
+      alert("Please configure the Formspree endpoint in the code to receive emails.");
+      setStatus("idle");
+      return;
+    }
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        alert("Failed to send message.");
+        setStatus("idle");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while sending the message.");
+      setStatus("idle");
+    }
   };
 
   return (
@@ -173,7 +201,7 @@ export default function ContactSection() {
               <button 
                 type="submit"
                 disabled={status === "sending" || status === "success"}
-                className="w-full py-5 bg-accent text-black rounded-2xl font-black text-sm uppercase tracking-[0.2em] hover:bg-[#a3d944] hover:shadow-xl hover:shadow-accent/20 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-5 bg-accent text-white dark:text-black rounded-2xl font-black text-sm uppercase tracking-[0.2em] hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/20 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === "idle" && <><span className="relative z-10">Send Message</span> <Send className="w-4 h-4" /></>}
                 {status === "sending" && <span>Sending...</span>}

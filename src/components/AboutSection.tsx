@@ -116,19 +116,19 @@ export default function AboutSection() {
                 
                 <div className="grid gap-6">
                    <div className="flex items-center gap-4 group/item">
-                      <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover/item:bg-accent group-hover/item:text-black transition-all">
+                      <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover/item:bg-accent group-hover/item:text-white dark:group-hover/item:text-black transition-all">
                         <TrendingUp className="w-5 h-5" />
                       </div>
                       <span className="font-bold text-gray-700 dark:text-gray-300">Predictive Sales Analytics</span>
                    </div>
                    <div className="flex items-center gap-4 group/item">
-                      <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover/item:bg-accent group-hover/item:text-black transition-all">
+                      <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover/item:bg-accent group-hover/item:text-white dark:group-hover/item:text-black transition-all">
                         <Database className="w-5 h-5" />
                       </div>
                       <span className="font-bold text-gray-700 dark:text-gray-300">Warehouse Performance KPIs</span>
                    </div>
                    <div className="flex items-center gap-4 group/item">
-                      <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover/item:bg-accent group-hover/item:text-black transition-all">
+                      <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover/item:bg-accent group-hover/item:text-white dark:group-hover/item:text-black transition-all">
                         <PieChart className="w-5 h-5" />
                       </div>
                       <span className="font-bold text-gray-700 dark:text-gray-300">Supply Chain Dashboarding</span>

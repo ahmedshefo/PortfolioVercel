@@ -92,29 +92,16 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate initial loading time
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Router>
-      <AnimatePresence mode="wait">
-        {loading && <LoadingOverlay key="loader" />}
-      </AnimatePresence>
       <ScrollToTop />
       <CustomCursor />
       <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-accent/30 selection:text-current overflow-hidden relative font-sans">
         {/* Global Background */}
         <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-white dark:bg-[#0a0a0a]" />
-          <div className="absolute bottom-0 left-0 w-full h-[60%] bg-[radial-gradient(ellipse_at_bottom,_#bef264_0%,_transparent_70%)] dark:bg-[radial-gradient(ellipse_at_bottom,_#1a2608_0%,_transparent_70%)] opacity-20 dark:opacity-40 blur-3xl" />
-          <div className="absolute bottom-[-10%] right-[-5%] w-[70%] h-[50%] bg-[radial-gradient(circle,_#bef264_0%,_transparent_60%)] dark:bg-[radial-gradient(circle,_#121d05_0%,_transparent_60%)] opacity-10 dark:opacity-30 blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-full h-[60%] bg-[radial-gradient(ellipse_at_bottom,_#2563eb_0%,_transparent_70%)] dark:bg-[radial-gradient(ellipse_at_bottom,_#1a2608_0%,_transparent_70%)] opacity-10 dark:opacity-40 blur-3xl" />
+          <div className="absolute bottom-[-10%] right-[-5%] w-[70%] h-[50%] bg-[radial-gradient(circle,_#2563eb_0%,_transparent_60%)] dark:bg-[radial-gradient(circle,_#121d05_0%,_transparent_60%)] opacity-5 dark:opacity-30 blur-3xl" />
         </div>
 
         <Navbar />

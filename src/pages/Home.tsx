@@ -10,7 +10,6 @@ import PortfolioSection from "../components/PortfolioSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import ContactSection from "../components/ContactSection";
 import ExperienceSection from "../components/ExperienceSection";
-import DataMesh from "../components/DataMesh";
 
 import meImage from "../../public/me.png";
 import sqlImage from "../../public/SQL.png";
@@ -58,25 +57,24 @@ export default function Home() {
     <div className="relative">
       {/* Hero Background Elements */}
       <div className="absolute top-0 left-0 w-full h-[100vh] overflow-hidden pointer-events-none z-0">
-        <DataMesh />
         <motion.div 
           animate={{ 
             scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-            x: [0, 50, 0],
-            y: [0, -30, 0]
+            opacity: [0.05, 0.1, 0.05],
+            x: [0, 20, 0],
+            y: [0, -10, 0]
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-accent/20 blur-[120px] rounded-full"
         />
         <motion.div 
           animate={{ 
             scale: [1.2, 1, 1.2],
-            opacity: [0.05, 0.15, 0.05],
-            x: [0, -40, 0],
-            y: [0, 40, 0]
+            opacity: [0.02, 0.08, 0.02],
+            x: [0, -20, 0],
+            y: [0, 20, 0]
           }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-accent/10 blur-[100px] rounded-full"
         />
       </div>
@@ -88,15 +86,21 @@ export default function Home() {
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ delay: 0.8, duration: 0.8 }}
-           className="w-full grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 md:mb-24 py-8 md:py-12 px-6 md:px-8 bg-white/50 dark:bg-white/5 backdrop-blur-xl rounded-3xl md:rounded-[2.5rem] border border-gray-100 dark:border-white/10"
+           className="relative overflow-hidden w-full grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 md:mb-24 py-8 md:py-12 px-6 md:px-8 bg-white/50 dark:bg-white/5 backdrop-blur-xl rounded-3xl md:rounded-[2.5rem] border border-gray-100 dark:border-white/10"
         >
+           {/* Animated Background */}
+           <motion.div 
+             animate={{ x: ['-100%', '100%'] }}
+             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+             className="absolute inset-0 -left-full -right-full z-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,0,0,0.03)_50%,transparent_100%)] dark:bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.05)_50%,transparent_100%)] pointer-events-none"
+           />
            {[
              { label: "Dashboards Built", value: "50+" },
              { label: "Data Accuracy", value: "100%" },
              { label: "Coaching Sessions", value: "100+" },
              { label: "Global Projects", value: "12+" },
            ].map((stat, i) => (
-             <div key={i} className="text-center relative">
+             <div key={i} className="text-center relative z-10">
                <div className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-950 dark:text-white tracking-tighter mb-1">
                  {stat.value}
                </div>
@@ -188,14 +192,14 @@ export default function Home() {
               <motion.a 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href="https://www.ahmed-elfeel.com" 
+                href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=ahmed-shefoo" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="relative overflow-hidden px-8 py-4 bg-accent text-black rounded-2xl font-bold text-base hover:bg-[#a3d944] hover:shadow-xl hover:shadow-accent/20 transition-all active:scale-95 flex items-center gap-3 group"
+                className="relative overflow-hidden px-8 py-4 bg-accent text-white dark:text-black rounded-2xl font-bold text-base hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/20 transition-all active:scale-95 flex items-center gap-3 group"
               >
                 <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[200%] group-hover:animate-[shimmer_1.5s_infinite]" />
-                <FileText className="w-5 h-5" />
-                View Full CV
+                <Linkedin className="w-5 h-5" />
+                Follow me on LinkedIn
               </motion.a>
               <motion.div
                 whileHover={{ scale: 1.02 }}

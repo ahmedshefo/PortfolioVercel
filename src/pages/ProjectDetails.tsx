@@ -70,7 +70,7 @@ export default function ProjectDetails() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <a 
                 href={project.link}
-                className="w-full sm:w-auto px-10 py-5 bg-accent text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:shadow-xl hover:shadow-accent/20 transition-all flex items-center justify-center gap-3"
+                className="w-full sm:w-auto px-10 py-5 bg-accent text-white dark:text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:shadow-xl hover:shadow-accent/20 transition-all flex items-center justify-center gap-3"
               >
                 Live Demo <ExternalLink className="w-4 h-4" />
               </a>

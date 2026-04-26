@@ -64,7 +64,7 @@ const Testimonials = () => {
                     />
                   </div>
                   <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-accent rounded-2xl flex items-center justify-center border-4 border-white dark:border-black shadow-xl scale-0 group-hover:scale-100 transition-transform duration-500 delay-200">
-                    <Quote className="w-3.5 h-3.5 text-black fill-current" />
+                    <Quote className="w-3.5 h-3.5 text-white dark:text-black fill-current" />
                   </div>
                 </div>
                 <div className="flex flex-col min-w-0">
@@ -93,7 +93,7 @@ const Testimonials = () => {
           className="mt-24 text-center"
         >
           <div className="p-16 bg-accent rounded-[4rem] flex flex-col items-center">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-8 italic tracking-tighter">
+            <h2 className="text-4xl md:text-5xl font-black text-white dark:text-black mb-8 italic tracking-tighter">
               Ready to be the next success story?
             </h2>
             <Link 

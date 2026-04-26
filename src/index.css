@@ -17,7 +17,7 @@
   --color-brand-900: #1e3a8a;
   --color-brand-950: #172554;
 
-  --color-accent: #bef264;
+  --color-accent: var(--accent);
 }
 
 @variant dark (&:where(.dark, .dark *));
@@ -25,13 +25,16 @@
 :root {
   background-color: #ffffff;
   color: #1a1a1a;
-  --color-accent: #bef264;
+  --accent: #2563eb; /* Blue in light mode */
+  --accent-rgb: 37, 99, 235;
   scroll-behavior: smooth;
 }
 
 .dark {
   background-color: #0a0a0a;
   color: #ffffff;
+  --accent: #bef264; /* Lime green in dark mode */
+  --accent-rgb: 190, 242, 100;
 }
 
 html {

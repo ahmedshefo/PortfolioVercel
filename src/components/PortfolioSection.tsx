@@ -91,7 +91,7 @@ export default function PortfolioSection() {
                 <div className="flex gap-4 transform lg:translate-y-6 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-700 delay-100">
                   <Link 
                     to={`/project/${project.id}`}
-                    className="flex items-center justify-center gap-3 bg-white text-gray-950 px-6 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-accent transition-all hover:scale-105 active:scale-95 shadow-2xl"
+                    className="flex items-center justify-center gap-3 bg-white text-gray-950 px-6 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-accent hover:text-white dark:hover:text-black transition-all hover:scale-105 active:scale-95 shadow-2xl"
                   >
                     Details <ExternalLink className="w-3.5 h-3.5" />
                   </Link>
@@ -130,7 +130,7 @@ export default function PortfolioSection() {
         >
           <button 
             onClick={() => setShowAll(!showAll)}
-            className="group flex items-center gap-3 px-10 py-5 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-accent hover:text-black hover:border-accent transition-all shadow-xl active:scale-95"
+            className="group flex items-center gap-3 px-10 py-5 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-accent hover:text-white dark:hover:text-black hover:border-accent transition-all shadow-xl active:scale-95"
           >
             {showAll ? (
               <>

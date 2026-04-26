@@ -2,13 +2,14 @@
 
 import { motion, AnimatePresence, useScroll, useSpring, useMotionValue, useMotionTemplate } from "motion/react";
 import { Menu, X, Linkedin, Github, Mail, Sparkles } from "lucide-react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const location = useLocation();
   const { scrollYProgress } = useScroll();
   
@@ -76,9 +77,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav 
+      <motion.nav 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
         onMouseMove={handleMouseMove}
-        className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 rounded-3xl group overflow-hidden ${
+        className={`fixed top-4 left-4 right-4 z-50 transition-colors duration-500 rounded-full group overflow-hidden ${
           scrolled 
             ? "bg-white/80 dark:bg-black/40 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-gray-200/50 dark:border-white/10 py-3" 
             : "bg-white/5 dark:bg-transparent py-4"
@@ -122,16 +126,34 @@ export default function Navbar() {
             <span className="text-3xl md:text-4xl font-black tracking-tighter text-gray-900 dark:text-white">S</span>
           </Link>
 
-          <div className="hidden md:flex items-center justify-center gap-10 flex-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`text-[15px] font-semibold transition-all ${isActive(link.href) ? "text-accent" : "text-gray-500 dark:text-white/40 hover:text-gray-950 dark:hover:text-white"}`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center justify-center gap-1 flex-2 relative" onMouseLeave={() => setHoveredIndex(null)}>
+            {navLinks.map((link, i) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  className={`relative px-4 py-2 text-[15px] font-semibold transition-colors ${active ? "text-accent" : "text-gray-500 dark:text-white/40 hover:text-gray-900 dark:hover:text-white"}`}
+                >
+                  {hoveredIndex === i && (
+                    <motion.div
+                      layoutId="nav-hover"
+                      className="absolute inset-0 bg-gray-100 dark:bg-white/10 rounded-full -z-10"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  {active && (
+                    <motion.div
+                      layoutId="nav-active"
+                      className="absolute left-4 right-4 -bottom-1 h-0.5 bg-accent rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center justify-end gap-6 flex-1">
@@ -157,7 +179,7 @@ export default function Navbar() {
             </button>
 
             <button 
-              className="md:hidden p-2 transition-colors"
+              className="lg:hidden p-2 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -174,7 +196,7 @@ export default function Navbar() {
           className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent origin-left overflow-hidden"
           style={{ scaleX }}
         />
-      </nav>
+      </motion.nav>
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -182,7 +204,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-white dark:bg-black/95 backdrop-blur-3xl p-8 md:hidden flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[60] bg-white dark:bg-black/95 backdrop-blur-3xl p-8 pt-32 lg:hidden flex flex-col items-center justify-start overflow-y-auto"
           >
             <button 
               onClick={() => setIsMenuOpen(false)}

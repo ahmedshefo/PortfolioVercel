@@ -45,7 +45,7 @@ export default function Footer() {
             className="group flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
           >
             Back to Top
-            <div className="w-10 h-10 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center group-hover:bg-accent group-hover:text-black transition-all">
+            <div className="w-10 h-10 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center group-hover:bg-accent group-hover:text-white dark:group-hover:text-black transition-all">
               <ArrowUp className="w-4 h-4" />
             </div>
           </button>
