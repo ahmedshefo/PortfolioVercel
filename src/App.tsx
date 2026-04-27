@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, AnimatePresence } from "motion/react";
+import { useScroll, useSpring, motion, AnimatePresence } from "motion/react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Home from "./pages/Home";
 import ProjectDetails from "./pages/ProjectDetails";
 import Testimonials from "./pages/Testimonials";
@@ -19,6 +19,8 @@ import ContactSection from "./components/ContactSection";
 import ExperienceSection from "./components/ExperienceSection";
 import PageTransition from "./components/PageTransition";
 import LoadingOverlay from "./components/LoadingOverlay";
+import SmoothScroll from "./components/SmoothScroll";
+import { useDynamicTitle } from "./hooks/useDynamicTitle";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -35,7 +37,7 @@ function PageLayout({ children, title, subtitle }: { children: React.ReactNode, 
     <div className="pt-32 pb-16">
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+  initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
@@ -92,26 +94,42 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  useDynamicTitle("AS | Data Analyst", "💔 Come back!");
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <Router>
-      <ScrollToTop />
-      <CustomCursor />
-      <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-accent/30 selection:text-current overflow-hidden relative font-sans">
-        {/* Global Background */}
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-white dark:bg-[#0a0a0a]" />
-          <div className="absolute bottom-0 left-0 w-full h-[60%] bg-[radial-gradient(ellipse_at_bottom,_#2563eb_0%,_transparent_70%)] dark:bg-[radial-gradient(ellipse_at_bottom,_#1a2608_0%,_transparent_70%)] opacity-10 dark:opacity-40 blur-3xl" />
-          <div className="absolute bottom-[-10%] right-[-5%] w-[70%] h-[50%] bg-[radial-gradient(circle,_#2563eb_0%,_transparent_60%)] dark:bg-[radial-gradient(circle,_#121d05_0%,_transparent_60%)] opacity-5 dark:opacity-30 blur-3xl" />
+    <SmoothScroll>
+      <Router>
+        <ScrollToTop />
+        <CustomCursor />
+        {/* Global Reading Progress Bar */}
+        <motion.div 
+          className="fixed top-0 left-0 right-0 h-1 bg-accent z-[100] origin-left"
+          style={{ scaleX }}
+        />
+        <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-accent/30 selection:text-current overflow-hidden relative font-sans">
+          {/* Global Background */}
+          <div className="fixed inset-0 pointer-events-none z-0">
+            <div className="absolute top-0 left-0 w-full h-full bg-white dark:bg-[#0a0a0a]" />
+            <div className="absolute bottom-0 left-0 w-full h-[60%] bg-[radial-gradient(ellipse_at_bottom,_#2563eb_0%,_transparent_70%)] dark:bg-[radial-gradient(ellipse_at_bottom,_#1a2608_0%,_transparent_70%)] opacity-10 dark:opacity-40 blur-3xl" />
+            <div className="absolute bottom-[-10%] right-[-5%] w-[70%] h-[50%] bg-[radial-gradient(circle,_#2563eb_0%,_transparent_60%)] dark:bg-[radial-gradient(circle,_#121d05_0%,_transparent_60%)] opacity-5 dark:opacity-30 blur-3xl" />
+          </div>
+
+          <Navbar />
+
+          <div className="relative z-10">
+            <AnimatedRoutes />
+          </div>
+
+          <Footer />
         </div>
-
-        <Navbar />
-
-        <div className="relative z-10">
-          <AnimatedRoutes />
-        </div>
-
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </SmoothScroll>
   );
 }

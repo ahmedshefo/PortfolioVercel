@@ -190,12 +190,6 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-        
-        {/* Scroll Progress line */}
-        <motion.div 
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent origin-left overflow-hidden"
-          style={{ scaleX }}
-        />
       </motion.nav>
 
       <AnimatePresence>

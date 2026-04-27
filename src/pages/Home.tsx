@@ -10,6 +10,7 @@ import PortfolioSection from "../components/PortfolioSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import ContactSection from "../components/ContactSection";
 import ExperienceSection from "../components/ExperienceSection";
+import MagneticWrapper from "../components/MagneticWrapper";
 
 import meImage from "../../public/me.png";
 import sqlImage from "../../public/SQL.png";
@@ -43,9 +44,16 @@ const Typewriter = ({ roles }: { roles: string[] }) => {
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, roles]);
 
+  const roleColors = [
+    "text-blue-500 dark:text-blue-400 drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]", // BI Analyst
+    "text-emerald-500 dark:text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.8)]", // Data Analyst
+    "text-purple-500 dark:text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"  // Business Analyst
+  ];
+
   return (
-    <span className="text-gray-900 dark:text-white border-r-4 border-accent pr-1 animate-pulse">
-      {roles[index].substring(0, subIndex)}
+    <span className="font-mono text-gray-900 dark:text-white font-medium text-[1.1em] tracking-tight">
+      <span className="text-accent mr-2">&gt;</span>
+      [<span className={`border-r-4 border-current pr-1 animate-pulse mx-1 transition-colors duration-300 ${roleColors[index % roleColors.length]}`}>{roles[index].substring(0, subIndex)}</span>]
     </span>
   );
 };
@@ -166,7 +174,6 @@ export default function Home() {
                 className="h-12 flex items-center"
               >
                 <div className="text-2xl md:text-3xl font-bold text-gray-400 dark:text-gray-500 flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                   <Typewriter roles={roles} />
                 </div>
               </motion.div>
@@ -189,30 +196,28 @@ export default function Home() {
               }}
               className="flex flex-wrap items-center gap-4"
             >
-              <motion.a 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=ahmed-shefoo" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="relative overflow-hidden px-8 py-4 bg-accent text-white dark:text-black rounded-2xl font-bold text-base hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/20 transition-all active:scale-95 flex items-center gap-3 group"
-              >
-                <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[200%] group-hover:animate-[shimmer_1.5s_infinite]" />
-                <Linkedin className="w-5 h-5" />
-                Follow me on LinkedIn
-              </motion.a>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <MagneticWrapper>
+                <a 
+                  href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=ahmed-shefoo" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="relative overflow-hidden px-8 py-4 bg-accent text-white dark:text-black rounded-2xl font-bold text-base hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/20 transition-all active:scale-95 flex items-center gap-3 group block"
+                >
+                  <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[200%] group-hover:animate-[shimmer_1.5s_infinite]" />
+                  <Linkedin className="w-5 h-5" />
+                  Follow me on LinkedIn
+                </a>
+              </MagneticWrapper>
+              
+              <MagneticWrapper>
                 <Link 
                   to="/contact"
-                  className="px-8 py-4 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-white/10 rounded-2xl font-bold text-base hover:border-accent/50 hover:bg-gray-200 dark:hover:bg-white/10 transition-all active:scale-95 flex items-center gap-3"
+                  className="px-8 py-4 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-white/10 rounded-2xl font-bold text-base hover:border-accent/50 hover:bg-gray-200 dark:hover:bg-white/10 transition-all active:scale-95 flex items-center gap-3 block"
                 >
                   <Mail className="w-5 h-5 text-accent" />
                   Contact Me
                 </Link>
-              </motion.div>
+              </MagneticWrapper>
             </motion.div>
 
 
