@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
 import React from "react";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const animations = {
   initial: { opacity: 0 },
