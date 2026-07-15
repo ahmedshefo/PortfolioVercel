@@ -1,0 +1,21 @@
+{
+  "name": "Ahmed El-Feel Portfolio",
+  "short_name": "Ahmed El-Feel",
+  "description": "Business Intelligence and Data Analytics Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/me.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/me.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
